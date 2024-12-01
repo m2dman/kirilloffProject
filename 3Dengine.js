@@ -100,6 +100,18 @@ scene.onPointerObservable.add(evt =>{
 //     }
 // )
 
+BABYLON.SceneLoader.ImportMesh(
+        null,
+        'PE-2/',
+        'bomber.gltf',
+        scene,
+        (meshArray) =>{
+            // let plane = meshArray[0];
+            objects.push(meshArray[0])
+            plane.rotation.z = Math.PI/2
+        }
+    )
+
 // //танк
 
 // let tank = BABYLON.SceneLoader.ImportMesh(
