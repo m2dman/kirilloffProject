@@ -1,6 +1,4 @@
 
-
-
 //Thak you Ateros!
 let canvas = window.document.querySelector('#render-canvas');
 // Создание движка
@@ -88,30 +86,24 @@ scene.onPointerObservable.add(evt =>{
 
 
 
-// //самолет
-// BABYLON.SceneLoader.ImportMesh(
-//     null,
-//     'PE-2/',
-//     'bomber.gltf',
-//     scene,
-//     (meshArray) =>{
-//         let plane = meshArray[0];
-//         plane.rotation.z = Math.PI/2
-//     }
-// )
-
-BABYLON.SceneLoader.ImportMesh(
+//самолет
+function start () {
+    document.getElementById('load').showModal()
+    BABYLON.SceneLoader.ImportMesh(
         null,
         'PE-2/',
         'bomber.gltf',
         scene,
         (meshArray) =>{
             // let plane = meshArray[0];
-            objects.push(meshArray[0])
-            plane.rotation.z = Math.PI/2
+            objects.push(meshArray[0]);
+            plane.rotation.z = Math.PI/2;
         }
     )
+    document.getElementById('load').close()
+}
 
+start()
 // //танк
 
 // let tank = BABYLON.SceneLoader.ImportMesh(
@@ -143,13 +135,13 @@ let objects = [];
 
 if (objects.length>1){
     for(i=1; i<objects.length;i++){
-        objects[i].dispose()
+        objects[i].dispose();
     }
 }
-
 // создание самолета
 
 document.getElementById('plane').addEventListener('click',()=>{
+    document.getElementById('load').showModal()
     for(i=0; i<objects.length;i++){
         objects[i].dispose()
         objects= []
@@ -163,18 +155,20 @@ document.getElementById('plane').addEventListener('click',()=>{
         scene,
         (meshArray) =>{
             // let plane = meshArray[0];
-            objects.push(meshArray[0])
-            plane.rotation.z = Math.PI/2
+            objects.push(meshArray[0]);
+            plane.rotation.z = Math.PI/2;
         }
     )
+    document.getElementById('load').close()
 })
 
 //создание танка
 
 document.getElementById('tank').addEventListener('click',()=>{
+    document.getElementById('load').showModal()
     for(i=0; i<objects.length;i++){
-        objects[i].dispose()
-        objects= []
+        objects[i].dispose();
+        objects= [];
     }
     model = 2
     console.log(model)
@@ -189,4 +183,5 @@ document.getElementById('tank').addEventListener('click',()=>{
             t34.rotation.z = Math.PI/2;
         }
     )
+    document.getElementById('load').close()
 })
