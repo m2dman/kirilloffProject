@@ -141,6 +141,12 @@ engine.runRenderLoop(()=>{
 let model = null;
 let objects = [];
 
+if (objects.length>1){
+    for(i=1; i<objects.length;i++){
+        objects[i].dispose()
+    }
+}
+
 // создание самолета
 
 document.getElementById('plane').addEventListener('click',()=>{
