@@ -1,3 +1,6 @@
+
+
+
 //Thak you Ateros!
 let canvas = window.document.querySelector('#render-canvas');
 // Создание движка
@@ -30,11 +33,14 @@ let light = new BABYLON.PointLight('light', new BABYLON.Vector3(10, 10, 0), scen
 // boxMaterial.emissiveColor = new BABYLON.Color3(0, 0.58, 0.86);
 // box.material = boxMaterial;
 
+//коллизии
+
+
 //вращение обьекта
 const sensitive = 0.01
 let pickMesh = null
 let isRotating=false
-let rotaDirection = 'y'
+let rotaDirection = 'all'
 scene.onPointerObservable.add(evt =>{
     const x= evt.event.offsetX
     const y= evt.event.offsetY
@@ -61,12 +67,13 @@ scene.onPointerObservable.add(evt =>{
         switch (rotaDirection){
             case'x':
             // console.log('x Rotate',amountX)
-                pickMesh.rotate(new BABYLON.Vector3(0,1,0), amountX)
+                pickMesh.rotate(new BABYLON.Vector3(0,1,0), -amountX)
                 break
             case 'y':
                 pickMesh.rotate(new BABYLON.Vector3(1,0,0), amountY)
                 break
             case 'all':
+                pickMesh.rotate(new BABYLON.Vector3(1,1,0), amountY, amountX)
                 break
         }
         this.prePoint ={x,y}
@@ -81,17 +88,32 @@ scene.onPointerObservable.add(evt =>{
 
 
 
-//самолет
-BABYLON.SceneLoader.ImportMesh(
-    null,
-    'PE-2/',
-    'bomber.gltf',
-    scene,
-    (meshArray) =>{
-        let plane = meshArray[0];
-        plane.rotation.z = Math.PI/2
-    }
-)
+// //самолет
+// BABYLON.SceneLoader.ImportMesh(
+//     null,
+//     'PE-2/',
+//     'bomber.gltf',
+//     scene,
+//     (meshArray) =>{
+//         let plane = meshArray[0];
+//         plane.rotation.z = Math.PI/2
+//     }
+// )
+
+// //танк
+
+// let tank = BABYLON.SceneLoader.ImportMesh(
+//     null,
+//     'T-34/',
+//     't34.gltf',
+//     scene,
+//     (meshArray) =>{
+//         let t34 = meshArray[0];
+//         t34.rotation.z = Math.PI/2;
+//     }
+// )
+
+
 
 
 
@@ -104,3 +126,49 @@ engine.runRenderLoop(()=>{
 // })
 
 
+let model = null;
+let objects = [];
+
+// создание самолета
+
+document.getElementById('plane').addEventListener('click',()=>{
+    for(i=0; i<objects.length;i++){
+        objects[i].dispose()
+        objects= []
+    }
+    model = 1
+    console.log(model)
+    BABYLON.SceneLoader.ImportMesh(
+        null,
+        'PE-2/',
+        'bomber.gltf',
+        scene,
+        (meshArray) =>{
+            // let plane = meshArray[0];
+            objects.push(meshArray[0])
+            plane.rotation.z = Math.PI/2
+        }
+    )
+})
+
+//создание танка
+
+document.getElementById('tank').addEventListener('click',()=>{
+    for(i=0; i<objects.length;i++){
+        objects[i].dispose()
+        objects= []
+    }
+    model = 2
+    console.log(model)
+    BABYLON.SceneLoader.ImportMesh(
+        null,
+        'T-34/',
+        't34.gltf',
+        scene,
+        (meshArray) =>{
+            // let t34 = meshArray[0];
+            objects.push(meshArray[0])
+            t34.rotation.z = Math.PI/2;
+        }
+    )
+})
