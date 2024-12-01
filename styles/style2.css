@@ -1,7 +1,51 @@
+*{
+    margin: 0;
+    padding: 0;
+}
 
 body, #render-canvas {
     margin: 0;
     padding: 0;
     width: 100vw;
     height: 100vh;
+    position: fixed;
+    outline: none;
+    font-family: "Rubik Mono One", monospace;
+}
+
+#ui{
+    position: fixed;
+    margin: 0 auto;
+    padding: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 5vh;
+    background-color: white;
+}
+
+
+
+button{
+    background-color: black;
+    color: white;
+    border-color:white;
+    font-family: "Rubik Mono One", monospace;
+    margin:0;
+    padding: 0;
+    width: 100px;
+    height: 32px;
+}
+
+#tank{
+    width: 50vw;
+    height: 5vh;
+    position: absolute;
+    right: 0;
+}
+
+#plane{
+    width: 50vw;
+    height: 5vh;
+    position: absolute;
+    left: 0;
 }
