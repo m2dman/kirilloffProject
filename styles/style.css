@@ -4,6 +4,8 @@
     margin: 0;
     font-family: "Rubik Mono One", monospace;
     background-color: black;
+    position: sticky;
+    top: 0;
 }
 
 *{
@@ -34,6 +36,7 @@ a:current{
 }
 
 #text{
+    margin-top: 25%;
     padding: 20px;
     font-size: smaller;
     margin: 0 auto;
