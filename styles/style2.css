@@ -20,7 +20,7 @@ body, #render-canvas {
     bottom: 0;
     width: 100vw;
     height: 5vh;
-    background-color: white;
+    background-color: black;
 }
 
 
@@ -28,26 +28,29 @@ body, #render-canvas {
 button{
     background-color: black;
     color: white;
-    border-color:white;
+    border-color:black;
     font-family: "Rubik Mono One", monospace;
     margin:0;
     padding: 0;
     width: 100px;
     height: 32px;
+    border: 0px black solid;
 }
 
 #tank{
-    width: 50vw;
+    left: 15vw;
+    width: 30vw;
     height: 5vh;
-    position: absolute;
-    right: 0;
 }
 
 #plane{
-    width: 50vw;
+    width: 30vw;
     height: 5vh;
-    position: absolute;
-    left: 0;
+}
+
+#katyusha{
+    width: 30vw;
+    height: 5vh;
 }
 
 dialog{
