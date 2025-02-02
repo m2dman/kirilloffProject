@@ -185,3 +185,27 @@ document.getElementById('tank').addEventListener('click',()=>{
     )
     document.getElementById('load').close()
 })
+
+//создание бм-13
+
+document.getElementById('katyusha').addEventListener('click',()=>{
+    document.getElementById('load').showModal()
+    for(i=0; i<objects.length;i++){
+        objects[i].dispose();
+        objects= [];
+    }
+    model = 3
+    console.log(model)
+    BABYLON.SceneLoader.ImportMesh(
+        null,
+        'katyusha/',
+        'KATYUSHA-UNION.gltf',
+        scene,
+        (meshArray) =>{
+            // let katyusha = meshArray[0];
+            objects.push(meshArray[0])
+            katyusha.rotation.z = Math.PI/2;
+        }
+    )
+    document.getElementById('load').close()
+})
